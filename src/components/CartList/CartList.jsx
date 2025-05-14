@@ -1,11 +1,13 @@
 function CartList({ cart, setCart }) {
   const handleCartAmount = (id, amount) => {
     setCart((prevCart) =>
-      prevCart.map((plant) =>
-        plant.id === id
-          ? { ...plant, quantity: plant.quantity + amount }
-          : plant
-      )
+      prevCart
+        .map((plant) =>
+          plant.id === id
+            ? { ...plant, quantity: plant.quantity + amount }
+            : plant
+        )
+        .filter((plant) => plant.quantity > 0)
     );
   };
 
